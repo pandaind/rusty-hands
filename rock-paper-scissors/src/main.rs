@@ -18,6 +18,8 @@ fn main() {
                 let choices = ["rock", "paper", "scissors"];
                 let computer_choice = choices[rng.random_range(0..choices.len())];
                 println!("Computer's choice: {}", computer_choice);
+                let result = determine_winner(user_choice.trim().to_lowercase().as_str(), computer_choice);
+                println!("Result: {}", result);
             }
             "quit" => {
                 println!("Thanks for playing!");
@@ -28,5 +30,18 @@ fn main() {
                 return;
             }
         }
+    }
+}
+
+fn determine_winner(user_choice: &str, computer_choice: &str) -> &'static str {
+    if user_choice == computer_choice {
+        "It's a tie!"
+    } else if (user_choice == "rock" && computer_choice == "scissors")
+        || (user_choice == "paper" && computer_choice == "rock")
+        || (user_choice == "scissors" && computer_choice == "paper")
+    {
+        "You win!"
+    } else {
+        "Computer wins!"
     }
 }
