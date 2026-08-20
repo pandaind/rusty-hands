@@ -39,6 +39,5 @@ fn read_file(file_path: &str, show_line_numbers: bool, search_keyword: Option<&S
             println!("{}", line);
         }
     }
-
     Ok(())
 }
